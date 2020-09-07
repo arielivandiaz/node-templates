@@ -1,0 +1,11 @@
+{
+    "port": 4747,
+    "url": "",
+    "verbose": 1,
+    "connection": {
+      "host": "localhost",
+      "user": "root",
+      "password": "",
+      "database": ""
+    }
+}
