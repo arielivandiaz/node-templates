@@ -8,4 +8,4 @@ echo ${message}
 git status 
 git add -A
 git commit -m ${message}
-git push  origin sql
+git push  origin sql-sequelize
