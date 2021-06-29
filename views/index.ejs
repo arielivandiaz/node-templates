@@ -1,11 +1,59 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
-  <head>
-    <title><%= title %></title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-  </head>
-  <body>
-    <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
-  </body>
+
+<head>
+    <title>T_chat - Taconite</title>
+    <!-- META -->
+    <meta charset="utf-8">
+    <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+
+
+</head>
+
+<body class="    ">
+    <section class="col">
+        <div>
+
+            <ul id="chatbox">
+
+            </ul>
+
+        </div>
+        <div class="  ">
+            <div class="  ">
+                <input type="text" class="w80" id="msgInput">
+                <button class="" id="sendBtn">SEND</button>
+            </div>
+        </div>
+    </section>
+    <script src="/socket.io/socket.io.js"></script>
+
+    <script>
+        console.log("holazaza");
+        var socket = io(); // url : http://localhost:4747/
+
+        var counter = 0;
+        socket.emit('join', {
+            msg: "joined"
+        });
+
+
+        document.getElementById("sendBtn").addEventListener("click", function () {
+            var msgInput = document.getElementById("msgInput");
+            socket.send(msgInput.value);
+            msgInput.value = '';
+        });
+
+
+        socket.on('message', function (message) {
+            console.log(message);
+            var newMsg = document.createElement('LI');
+            newMsg.innerText = message;
+            document.getElementById('chatbox').appendChild(newMsg);
+
+        });
+    </script>
+</body>
+
 </html>
